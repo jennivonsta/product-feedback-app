@@ -14,50 +14,94 @@ Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
 
 ### 🔹 GET `/get-all-suggestions`
 
-**Description:** Write your description here
+**Description:** Returns all suggestions from the suggestions table.
+
+**Example Request URL:**  
+`https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com/get-all-suggestions`
+
 
 **Example Response:**
 
+
 ```
-Write the data returned by this endpoint. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+[
+  {
+    "id": 1,
+    "title": "Add tags for solutions",
+    "description": "Easier to search for solutions based on a specific stack.",
+    "category": "enhancement"
+  },
+  {
+    "id": 2,
+    "title": "Add a dark theme option",
+    "description": "It would help people with light sensitivities and who prefer dark mode.",
+    "category": "feature"
+  },
+  {
+    "id": 3,
+    "title": "Q&A within the challenge hubs",
+    "description": "Challenge-specific Q&A would make for easy reference.",
+    "category": "feature"
+  }
+]
 ```
 
 ---
 
 ### 🔹 GET `/get-suggestions-by-category/:category`
 
-**Description:** Write your description here
+**Description:** Returns all suggestions that match the category provided in the URL parameter.
+
+**Example Request URL:**
+https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com/get-suggestions-by-category/feature
 
 **Example Response:**
 
 ```
-Write the data returned by this endpoint. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+[
+  {
+    "id": 2,
+    "title": "Add a dark theme option",
+    "description": "It would help people with light sensitivities and who prefer dark mode.",
+    "category": "feature"
+  },
+  {
+    "id": 3,
+    "title": "Q&A within the challenge hubs",
+    "description": "Challenge-specific Q&A would make for easy reference.",
+    "category": "feature"
+  }
+]
 ```
 
 ---
 
 ### 🔹 POST `/add-one-suggestion`
 
-**Description:** Write your description here
+**Description:** Adds one new suggestion to the suggestions table using the data sent in the request body.
+
+**Example Request URL:**
+https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com/add-one-suggestion
 
 **Example Request Body:**
 
 ```
-Write the data required in the request body. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+{
+  "title": "Add upvoting",
+  "description": "Users should be able to upvote suggestions they agree with.",
+  "category": "feature"
+} 
 ```
 
 **Example Response:**
 
 ```
-Write the data returned by this endpoint. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+{
+  "id": 4,
+  "title": "Add upvoting",
+  "description": "Users should be able to upvote suggestions they agree with.",
+  "category": "feature"
+}
 ```
 ---
 
