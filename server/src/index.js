@@ -4,6 +4,7 @@
 
 import express from "express";
 import pg from "pg";
+import db from "./config.js";
 
 
 // -------------------------------
@@ -17,17 +18,6 @@ const port = 3000;
 app.use(express.json());
 
 
-// -------------------------------
-// 3. CONNECT TO DATABASE (Neon)
-// -------------------------------
-
-// paste your Neon connection string below
-const db = new pg.Pool({
-  connectionString: "postgresql://neondb_owner:npg_VkYHmr8vdfA7@ep-sweet-scene-an39bif2-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require",
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
 
 
 // -------------------------------
