@@ -80,38 +80,50 @@ async function addOneSuggestion(title, description, category) {
 
 // test route
 app.get("/", (req, res) => {
-  res.send("Server is running!");
-});
-
-
-// GET all suggestions
-app.get("/get-all-suggestions", async (req, res) => {
-  const data = await getAllSuggestions();
-  res.json(data);
-});
-
-
-// GET suggestions by category
-app.get("/get-suggestions-by-category/:category", async (req, res) => {
-  const category = req.params.category;
-  const data = await getSuggestionsByCategory(category);
-  res.json(data);
-});
-
-
-// POST add one suggestion
-app.post("/add-one-suggestion", async (req, res) => {
-  const { title, description, category } = req.body;
-
-  const newSuggestion = await addOneSuggestion(
-    title,
-    description,
-    category
-  );
-
-  res.json(newSuggestion);
-});
-
+    res.send("Server is running!");
+  });
+  
+  // GET all suggestions
+  app.get("/get-all-suggestions", async (req, res) => {
+    try {
+      const data = await getAllSuggestions();
+      res.json(data);
+    } catch (error) {
+      console.error("Error in /get-all-suggestions:", error);
+      res.status(500).json({ error: "Failed to get suggestions" });
+    }
+  });
+  
+  // GET suggestions by category
+  app.get("/get-suggestions-by-category/:category", async (req, res) => {
+    try {
+      const category = req.params.category;
+      const data = await getSuggestionsByCategory(category);
+      res.json(data);
+    } catch (error) {
+      console.error("Error in /get-suggestions-by-category:", error);
+      res.status(500).json({ error: "Failed to get suggestions by category" });
+    }
+  });
+  
+  // POST add one suggestion
+  app.post("/add-one-suggestion", async (req, res) => {
+    try {
+      const { title, description, category } = req.body;
+  
+      const newSuggestion = await addOneSuggestion(
+        title,
+        description,
+        category
+      );
+  
+      res.json(newSuggestion);
+    } catch (error) {
+      console.error("Error in /add-one-suggestion:", error);
+      res.status(500).json({ error: "Failed to add suggestion" });
+    }
+  });
+  
 
 // -------------------------------
 // 6. START SERVER
