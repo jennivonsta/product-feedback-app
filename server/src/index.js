@@ -4,7 +4,7 @@
 
 import express from "express";
 import pg from "pg";
-import db from "./config.js";
+import config from "./config.js";
 
 
 // -------------------------------
@@ -18,6 +18,14 @@ const port = 3000;
 app.use(express.json());
 
 
+// -------------------------------
+// 3. CONNECT TO DATABASE
+// -------------------------------
+
+const db = new pg.Pool({
+  connectionString: config.DATABASE_URL,
+  ssl: true,
+});
 
 
 // -------------------------------
@@ -43,7 +51,7 @@ async function getSuggestionsByCategory(category) {
     SELECT * FROM suggestions
     WHERE category = $1;
     `,
-    [category] // this replaces $1 safely
+    [category]
   );
 
   return result.rows;
@@ -70,8 +78,7 @@ async function addOneSuggestion(title, description, category) {
 // 5. API ENDPOINTS
 // -------------------------------
 
-
-// test route (just to make sure server works)
+// test route
 app.get("/", (req, res) => {
   res.send("Server is running!");
 });
@@ -80,13 +87,13 @@ app.get("/", (req, res) => {
 // GET all suggestions
 app.get("/get-all-suggestions", async (req, res) => {
   const data = await getAllSuggestions();
-  res.json(data); // send data to frontend
+  res.json(data);
 });
 
 
 // GET suggestions by category
 app.get("/get-suggestions-by-category/:category", async (req, res) => {
-  const category = req.params.category; // grab from URL
+  const category = req.params.category;
   const data = await getSuggestionsByCategory(category);
   res.json(data);
 });
@@ -94,7 +101,6 @@ app.get("/get-suggestions-by-category/:category", async (req, res) => {
 
 // POST add one suggestion
 app.post("/add-one-suggestion", async (req, res) => {
-  // grab data from request body
   const { title, description, category } = req.body;
 
   const newSuggestion = await addOneSuggestion(
