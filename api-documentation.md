@@ -17,8 +17,8 @@ Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
 **Description:** Returns all suggestions from the suggestions table.
 
 **Example Request URL:**  
-https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com/get-all-suggestions
 
+https://product-feedback-app-tbru.onrender.com/
 
 **Example Response:**
 
