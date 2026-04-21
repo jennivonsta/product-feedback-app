@@ -4,7 +4,7 @@
 
 import express from "express";
 import pg from "pg";
-import config from "./config.js";
+
 
 
 // -------------------------------
@@ -23,7 +23,7 @@ app.use(express.json());
 // -------------------------------
 
 const db = new pg.Pool({
-  connectionString: config.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false,
   },

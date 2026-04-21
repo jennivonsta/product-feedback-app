@@ -71,6 +71,7 @@ These are all the technologies you should use to build your full-stack applicati
 ---
 
 ### 🎯 Milestone 1: Create SQL Database Schema
+- https://www.db-fiddle.com/f/7dW1pTV8SNjMnZsSaciJAL/2
 
 1. Review the [Figma designs](https://www.figma.com/design/vxjX8SdBOt21DCD14mrBM9/Product-Feedback-App-Design?node-id=0-1&t=5lLwvPHeEzOLQADS-1) and plan what data your app needs
 2. Create a new DB Fiddle via [db-fiddle.com](https://www.db-fiddle.com).
